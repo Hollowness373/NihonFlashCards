@@ -7,39 +7,60 @@ const { height, width } = Dimensions.get("window");
 const FlashCards = () => {
 
     const [ count, setCount] = useState(0)
-    const [ chrs, setChrs ] = useState(hiragana)
+    const [ chrs, setChrs ] = useState([{chr: "", romaji: ""}])
     const [ reveal, setReveal ] = useState(false)
+    const [ continueBTN, revContinueBTN ] = useState(false)
     
     const onReview = () => {
         setCount(0)
-        console.log(chrs.length)
-        
+        revContinueBTN(false)
     }
+
     const onNext = () => {
         var newCount = count + 1;
         setReveal(false)
         if (chrs.length <= newCount) {
+            console.log("CHeck last btn?")
             return
+        } else if (chrs.length-1 <= newCount) {
+            revContinueBTN(true)
         }
         setCount(newCount)
     }
+
     const onHold = () => {
         setReveal(!reveal)
     }
 
+    const onContinue = () => {
+        console.log("proceed")
+    }
+
+    useEffect(() => {
+        const newArr = hiragana.sort(() => Math.random() - 0.5)
+        setChrs(newArr)
+    }, [])
+
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={onHold} style={styles.cards}>
+                <Text style={styles.countIndicator}>{count + 1}/{chrs.length}</Text>
                 <Text style={styles.chrStyle}>{reveal ? chrs[count].romaji : chrs[count].chr}</Text>
             </TouchableOpacity>
             <View style={styles.footerContainer}>
                 <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                     <TouchableOpacity onPress={onReview} style={styles.buttons}>
-                        <Text>Review</Text>
+                        <Text style={styles.btnText}>Review</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={onNext} style={styles.buttons}>
-                        <Text>Next</Text>
-                    </TouchableOpacity>
+                    {continueBTN ? 
+                        <TouchableOpacity onPress={onContinue} style={[styles.buttons, {backgroundColor: "#58CC02"}]}>
+                            <Text style={[styles.btnText, {fontWeight: "bold"}]}>Continue</Text>
+                        </TouchableOpacity>
+                    :
+                        <TouchableOpacity onPress={onNext} style={styles.buttons}>
+                            <Text style={styles.btnText}>Next</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
             </View>
         </View>
@@ -73,11 +94,25 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     buttons: {
-        height: 50,
-        width: "30%",
+        height: 80,
+        width: "40%",
+        borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "white"
+        backgroundColor: '#0a7ea4'
+    },
+    btnText: {
+        color: "#FFF",
+        fontSize: 20,
+        letterSpacing: 1
+    },
+    countIndicator: {
+        fontSize: 18,
+        color: "#FFF",
+        position: "absolute",
+        top: 20,
+        right: 20
+
     }
 })
 

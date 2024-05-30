@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from "react-native";
-import FlashCards from "./(test)/FlashCards";
+import FlashCards from "./(test)/FlashCards"
 
 export default function Index() {
   return (
