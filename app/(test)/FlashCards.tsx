@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity} from "react-native";
-import hiragana from "@/assets/(characters)/hiragana/Hiragana.json"
+import hiragana from "@/assets/(characters)/hiragana/Hiragana.json";
+import katakana from "@/assets/(characters)/katakana/Katakana.json"
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 const { height, width } = Dimensions.get("window");
 
@@ -10,6 +12,9 @@ const FlashCards = () => {
     const [ chrs, setChrs ] = useState([{chr: "", romaji: ""}])
     const [ reveal, setReveal ] = useState(false)
     const [ continueBTN, revContinueBTN ] = useState(false)
+
+    const router = useRouter();
+    const { categoryName } = useLocalSearchParams<{categoryName: string}>();
     
     const onReview = () => {
         setCount(0)
@@ -33,12 +38,19 @@ const FlashCards = () => {
     }
 
     const onContinue = () => {
-        console.log("proceed")
+        router.push("/Study")
     }
 
     useEffect(() => {
-        const newArr = hiragana.sort(() => Math.random() - 0.5)
-        setChrs(newArr)
+        if (categoryName == "Hiragana") {
+            const newArr = hiragana.sort(() => Math.random() - 0.5)
+            setChrs(newArr)
+        } else if (categoryName == "Katakana") {
+            const newArr = katakana.sort(() => Math.random() - 0.5)
+            setChrs(newArr)
+        } else {
+            console.log(categoryName)
+        }
     }, [])
 
     return (

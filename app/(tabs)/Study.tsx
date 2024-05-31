@@ -7,7 +7,9 @@ import ChrCategory from '@/components/navlist/ChrCategory'
 const Study = () => {
   return (
     <View style={styles.container}>
-      <ChrCategory categoryName='Hiragana' />
+      <ChrCategory categoryName='Hiragana' disable={false} />
+      <ChrCategory categoryName='Katakana' disable={false} />
+      <ChrCategory categoryName='Kanji' disable={true} />
     </View>
   )
 }
@@ -15,7 +17,8 @@ const Study = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
         backgroundColor: "#1A1C29"
         //backgroundColor: '#151718',
     }
