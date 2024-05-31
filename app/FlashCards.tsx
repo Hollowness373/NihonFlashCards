@@ -38,7 +38,7 @@ const FlashCards = () => {
     }
 
     const onContinue = () => {
-        router.push("/Study")
+        router.dismissAll()
     }
 
     useEffect(() => {
@@ -62,7 +62,7 @@ const FlashCards = () => {
             <View style={styles.footerContainer}>
                 <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                     <TouchableOpacity onPress={onReview} style={styles.buttons}>
-                        <Text style={styles.btnText}>Review</Text>
+                        <Text style={styles.btnText}>Reset</Text>
                     </TouchableOpacity>
                     {continueBTN ? 
                         <TouchableOpacity onPress={onContinue} style={[styles.buttons, {backgroundColor: "#58CC02"}]}>

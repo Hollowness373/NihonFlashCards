@@ -6,9 +6,9 @@ import ChrCategory from '@/components/navlist/ChrCategory';
 export default function Quiz() {
   return (
     <View style={styles.container}>
-      <ChrCategory categoryName='Quiz 1' disable={true} />
-      <ChrCategory categoryName='Quiz 2' disable={true} />
-      <ChrCategory categoryName='Quiz 3' disable={true} />
+        <ChrCategory categoryName='Quiz 1' disable={true} />
+        <ChrCategory categoryName='Quiz 2' disable={true} />
+        <ChrCategory categoryName='Quiz 3' disable={true} />
     </View>
   )
 }

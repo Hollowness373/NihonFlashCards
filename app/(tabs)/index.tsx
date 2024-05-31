@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import ChrCategory from '@/components/navlist/ChrCategory'
 
 
 
-export default function Study() {
+export default function Index() {
   return (
     <View style={styles.container}>
       <ChrCategory categoryName='Hiragana' disable={false} />
@@ -23,7 +23,3 @@ const styles = StyleSheet.create({
         //backgroundColor: '#151718',
     }
 })
-
-
-
-
