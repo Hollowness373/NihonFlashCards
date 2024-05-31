@@ -5,11 +5,12 @@ import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function RootLayout() {
+export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
+      initialRouteName='Study'
       screenOptions={{
         tabBarStyle: {backgroundColor: "#2F3548", borderTopWidth: 0,},
         headerStyle: {backgroundColor: "#2F3548", },

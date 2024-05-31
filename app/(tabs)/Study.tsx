@@ -4,7 +4,7 @@ import ChrCategory from '@/components/navlist/ChrCategory'
 
 
 
-const Study = () => {
+export default function Study() {
   return (
     <View style={styles.container}>
       <ChrCategory categoryName='Hiragana' disable={false} />
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Study;
+
 
 

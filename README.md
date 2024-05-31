@@ -1,6 +1,5 @@
 # NihonFlashCards
 A android mobile application learning material to study Japanese characters.
-(under development)
 
 # Getting Started
 
