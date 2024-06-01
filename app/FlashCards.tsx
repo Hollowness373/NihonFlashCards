@@ -57,7 +57,7 @@ const FlashCards = () => {
         <View style={styles.container}>
             <TouchableOpacity onPress={onHold} style={styles.cards}>
                 <Text style={styles.countIndicator}>{count + 1}/{chrs.length}</Text>
-                <Text style={styles.chrStyle}>{reveal ? chrs[count].romaji : chrs[count].chr}</Text>
+                <Text style={ reveal ? styles.romajiStyle : styles.chrStyle}>{reveal ? chrs[count].romaji : chrs[count].chr}</Text>
             </TouchableOpacity>
             <View style={styles.footerContainer}>
                 <View style={{flexDirection: "row", justifyContent: "space-between"}}>
@@ -99,6 +99,10 @@ const styles = StyleSheet.create({
         color: "#FFF",
         fontSize: 230,
     },
+    romajiStyle: {
+        color: "#FFF",
+        fontSize: 150,
+    },
     footerContainer: {
         flex: 1,
         width: "100%",
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     buttons: {
-        height: 80,
+        height: 60,
         width: "40%",
         borderRadius: 10,
         justifyContent: "center",

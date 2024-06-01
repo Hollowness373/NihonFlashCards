@@ -32,11 +32,13 @@ const styles = StyleSheet.create({
     container: {
         height: height/12,
         width: "100%",
-        padding: 20,
+        alignItems: "center",
         justifyContent: "space-between",
         borderRadius: 10,
         flexDirection: "row",
-        marginTop: 30
+        marginTop: 30,
+        paddingLeft: 20,
+        paddingRight: 10
     },
     txtCategory: {
         fontSize: 20,
