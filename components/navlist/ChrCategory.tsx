@@ -21,9 +21,9 @@ const ChrCategory: React.FC<CategoryProps> = (props) => {
   }
 
   return (
-    <TouchableOpacity onPress={() => routeFlashCards(props.categoryName)}  disabled={props.disable} style={[styles.container, {backgroundColor: props.disable ? "#262a38": "#2F3548",}]}>
-      <Text style={[styles.txtCategory, {color: props.disable ? "gray" : "#FFF"}]}>{props.categoryName}</Text>
-      <Ionicons size={28} name='chevron-forward-outline' color={props.disable ? "gray" : "#FFF"} />
+    <TouchableOpacity onPress={() => routeFlashCards(props.categoryName)}  disabled={props.disable} style={[styles.container, {backgroundColor: props.disable ? "#262a38": "#00ADB5",}]}>
+      <Text style={[styles.txtCategory, {color: props.disable ? "gray" : "#EEE"}]}>{props.categoryName}</Text>
+      <Ionicons size={28} name='chevron-forward-outline' color={props.disable ? "gray" : "#EEE"} />
     </TouchableOpacity>
   )
 }
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     txtCategory: {
         fontSize: 20,
         letterSpacing: 1,
-        color: "#FFF"
     }
 })
 

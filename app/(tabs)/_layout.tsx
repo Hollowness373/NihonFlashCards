@@ -3,26 +3,23 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       initialRouteName='Study'
       screenOptions={{
-        tabBarStyle: {backgroundColor: "#2F3548", borderTopWidth: 0,},
-        headerStyle: {backgroundColor: "#2F3548", },
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarStyle: {backgroundColor: "#393E46", borderTopWidth: 0,},
+        headerStyle: {backgroundColor: "#393E46", },
+        tabBarActiveTintColor: "#00ADB5",
         headerShown: true,
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Study',
-          headerTintColor: "#FFF",
+          headerTintColor: "#EEE",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'language' : 'language-outline'} color={color} />
           ),
@@ -32,7 +29,7 @@ export default function TabLayout() {
         name="Quiz"
         options={{
           title: 'Quiz',
-          headerTintColor: "#FFF",
+          headerTintColor: "#EEE",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'book' : 'book-outline'} color={color} />
           ),

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 20,
     paddingRight: 20,
-    backgroundColor: "#1A1C29"
+    backgroundColor: "#222831"
     //backgroundColor: '#151718',
 }
 })

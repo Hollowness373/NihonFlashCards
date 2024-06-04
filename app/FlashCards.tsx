@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity} from "react-nativ
 import hiragana from "@/assets/(characters)/hiragana/Hiragana.json";
 import katakana from "@/assets/(characters)/katakana/Katakana.json"
 import { useRouter, useLocalSearchParams } from "expo-router";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const { height, width } = Dimensions.get("window");
 
@@ -25,7 +26,6 @@ const FlashCards = () => {
         var newCount = count + 1;
         setReveal(false)
         if (chrs.length <= newCount) {
-            console.log("CHeck last btn?")
             return
         } else if (chrs.length-1 <= newCount) {
             revContinueBTN(true)
@@ -39,6 +39,10 @@ const FlashCards = () => {
 
     const onContinue = () => {
         router.dismissAll()
+    }
+
+    const onBack = () => {
+        router.back()
     }
 
     useEffect(() => {
@@ -55,12 +59,19 @@ const FlashCards = () => {
 
     return (
         <View style={styles.container}>
+            <View style={styles.headerStyle}>
+                <TouchableOpacity onPress={onBack} style={styles.backBTN}> 
+                    <Ionicons size={30} name='arrow-back-outline' color={"#EEE"} />
+                </TouchableOpacity>
+                <Text style={styles.headerTxt}>{categoryName}</Text>
+            </View>
             <TouchableOpacity onPress={onHold} style={styles.cards}>
                 <Text style={styles.countIndicator}>{count + 1}/{chrs.length}</Text>
                 <Text style={ reveal ? styles.romajiStyle : styles.chrStyle}>{reveal ? chrs[count].romaji : chrs[count].chr}</Text>
             </TouchableOpacity>
             <View style={styles.footerContainer}>
-                <View style={{flexDirection: "row", justifyContent: "space-between"}}>
+                <Text style={styles.txtTip}>Tap the card to show the Romaji</Text>
+                <View style={styles.buttonsContainer}>
                     <TouchableOpacity onPress={onReview} style={styles.buttons}>
                         <Text style={styles.btnText}>Reset</Text>
                     </TouchableOpacity>
@@ -84,7 +95,21 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         padding: 20,
-        backgroundColor: '#151718',
+        backgroundColor: '#222831',
+    },
+    headerStyle: {
+        height: height / 12,
+        width: width,
+        backgroundColor: "#393E46",
+        flexDirection: "row",
+        alignItems: "center",
+        paddingLeft: 5,
+        paddingRight: 5
+    },
+    headerTxt: {
+        fontSize: 20,
+        marginLeft: 10,
+        color: "#EEE"
     },
     cards: {
         height: height/2.3,
@@ -93,7 +118,7 @@ const styles = StyleSheet.create({
         marginTop: height/12,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: '#0a7ea4'
+        backgroundColor: '#00ADB5'
     },
     chrStyle: {
         color: "#FFF",
@@ -106,8 +131,15 @@ const styles = StyleSheet.create({
     footerContainer: {
         flex: 1,
         width: "100%",
-        justifyContent: "center",
+        alignItems: "center",
         paddingTop: 20,
+    },
+    buttonsContainer: {
+        flex: 1,
+        flexDirection: "row", 
+        justifyContent: "space-between", 
+        alignItems: "center",
+        width: "100%"
     },
     buttons: {
         height: 60,
@@ -115,7 +147,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: '#0a7ea4'
+        backgroundColor: '#00ADB5'
     },
     btnText: {
         color: "#FFF",
@@ -128,7 +160,15 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 20,
         right: 20
-
+    },
+    backBTN: {
+        height: 50,
+        width: 50,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    txtTip: {
+        color: "#EEE"
     }
 })
 
