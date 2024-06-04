@@ -8,15 +8,16 @@ const { height, width } = Dimensions.get("window")
 interface CategoryProps {
     categoryName: string;
     disable: boolean;
+    setQuiz: Object
   }
 
-const ChrCategory: React.FC<CategoryProps> = (props) => {
+const QuizCategory: React.FC<CategoryProps> = (props) => {
 
   
   const router = useRouter();
 
   const routeFlashCards = (props: string) => {
-    router.push({pathname: "/FlashCards", params: { categoryName: props}})
+    router.push({pathname: "/QuizHandler", params: { categoryName: props }})
   }
 
   return (
@@ -45,4 +46,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ChrCategory;
+export default QuizCategory;

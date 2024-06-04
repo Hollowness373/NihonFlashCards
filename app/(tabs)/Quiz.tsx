@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react';
-import ChrCategory from '@/components/navlist/ChrCategory';
+import QuizCategory from '@/components/navlist/quizCategory';
 
 
 export default function Quiz() {
   return (
     <View style={styles.container}>
-        <ChrCategory categoryName='Quiz 1' disable={true} />
-        <ChrCategory categoryName='Quiz 2' disable={true} />
-        <ChrCategory categoryName='Quiz 3' disable={true} />
+        <QuizCategory categoryName='Quiz 1' disable={false} />
+        <QuizCategory categoryName='Quiz 2' disable={true} />
+        <QuizCategory categoryName='Quiz 3' disable={true} />
     </View>
   )
 }
