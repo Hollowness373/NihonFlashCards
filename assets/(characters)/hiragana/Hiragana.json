@@ -43,5 +43,6 @@
     {"chr" : "ろ", "romaji" : "ro"},
     {"chr" : "る", "romaji" : "ru"},
     {"chr" : "わ", "romaji" : "wa"},
+    {"chr" : "を", "romaji" : "wo"},
     {"chr" : "ん", "romaji" : "n"}
 ]

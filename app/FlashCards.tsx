@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity} from "react-native";
-import hiragana from "@/assets/(characters)/hiragana/Hiragana.json";
-import katakana from "@/assets/(characters)/katakana/Katakana.json"
 import { useRouter, useLocalSearchParams } from "expo-router";
 import Ionicons from '@expo/vector-icons/Ionicons';
+
+// importing characters from assets
+import hiragana from "@/assets/(characters)/hiragana/Hiragana.json";
+import dakuonHiragana from "@/assets/(characters)/hiragana/Dakuon.json"
+import comboHiragana from "@/assets/(characters)/hiragana/Combo.json"
+import katakana from "@/assets/(characters)/katakana/Katakana.json"
+import dakuonKatakana from "@/assets/(characters)/katakana/Dakuon.json"
+import comboKatakana from "@/assets/(characters)/katakana/Combo.json"
 
 const { height, width } = Dimensions.get("window");
 
@@ -11,6 +17,7 @@ const FlashCards = () => {
 
     const [ count, setCount] = useState(0)
     const [ chrs, setChrs ] = useState([{chr: "", romaji: ""}])
+    const [ headerName, setHeaderName ] = useState("")
     const [ reveal, setReveal ] = useState(false)
     const [ continueBTN, revContinueBTN ] = useState(false)
 
@@ -46,14 +53,37 @@ const FlashCards = () => {
     }
 
     useEffect(() => {
-        if (categoryName == "Hiragana") {
-            const newArr = hiragana.sort(() => Math.random() - 0.5)
-            setChrs(newArr)
-        } else if (categoryName == "Katakana") {
-            const newArr = katakana.sort(() => Math.random() - 0.5)
-            setChrs(newArr)
-        } else {
-            console.log(categoryName)
+        switch (categoryName) {
+            case "OriginalHiragana":
+                const newArr1 = hiragana.sort(() => Math.random() - 0.5)
+                setChrs(newArr1)
+                setHeaderName("Hiragana")
+                break;
+            case "DakuonHiragana":
+                const newArr2 = dakuonHiragana.sort(() => Math.random() - 0.5)
+                setChrs(newArr2)
+                setHeaderName("Hiragana Dakuon")
+                break;
+            case "ComboHiragana":
+                const newArr3 = comboHiragana.sort(() => Math.random() - 0.5)
+                setChrs(newArr3)
+                setHeaderName("Hiragana Combo")
+                break;
+            case "OriginalKatakana":
+                const newArr4 = katakana.sort(() => Math.random() - 0.5)
+                setChrs(newArr4)
+                setHeaderName("Katakana")
+                break;
+            case "DakuonKatakana":
+                const newArr5 = dakuonKatakana.sort(() => Math.random() - 0.5)
+                setChrs(newArr5)
+                setHeaderName("Katakana Dakuon")
+                break;
+            case "ComboKatakana":
+                const newArr6 = comboKatakana.sort(() => Math.random() - 0.5)
+                setChrs(newArr6)
+                setHeaderName("Katakana Combo")
+                break;
         }
     }, [])
 
@@ -63,7 +93,7 @@ const FlashCards = () => {
                 <TouchableOpacity onPress={onBack} style={styles.backBTN}> 
                     <Ionicons size={30} name='arrow-back-outline' color={"#EEE"} />
                 </TouchableOpacity>
-                <Text style={styles.headerTxt}>{categoryName}</Text>
+                <Text style={styles.headerTxt}>{headerName}</Text>
             </View>
             <TouchableOpacity onPress={onHold} style={styles.cards}>
                 <Text style={styles.countIndicator}>{count + 1}/{chrs.length}</Text>
@@ -122,7 +152,7 @@ const styles = StyleSheet.create({
     },
     chrStyle: {
         color: "#FFF",
-        fontSize: 230,
+        fontSize: 150,
     },
     romajiStyle: {
         color: "#FFF",

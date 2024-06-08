@@ -8,7 +8,6 @@ const { height, width } = Dimensions.get("window")
 interface CategoryProps {
     categoryName: string;
     disable: boolean;
-    setQuiz: Object
   }
 
 const QuizCategory: React.FC<CategoryProps> = (props) => {

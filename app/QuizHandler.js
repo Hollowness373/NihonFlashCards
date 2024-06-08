@@ -110,10 +110,12 @@ const QuizHandler = () => {
     return (
         <View style={styles.container}>
             <View style={styles.headerStyle}>
-                <TouchableOpacity onPress={onBack} style={styles.backBTN}> 
-                    <Ionicons size={30} name='arrow-back-outline' color={"#EEE"} />
-                </TouchableOpacity>
-                <Text style={styles.headerTxt}>{categoryName}</Text>
+                <View style={styles.headerContent}>
+                    <TouchableOpacity onPress={onBack} style={styles.backBTN}> 
+                        <Ionicons size={30} name='arrow-back-outline' color={"#EEE"} />
+                    </TouchableOpacity>
+                    <Text style={styles.headerTxt}>{categoryName}</Text>
+                </View>
             </View>
             <View  style={styles.cards}>
                 <Text style={styles.countIndicator}>Q{count + 1}</Text>
@@ -143,15 +145,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        padding: 20,
         backgroundColor: '#222831',
     },
+    headerContent: {
+        flexDirection: "row", 
+        alignItems: "center"
+    },
     headerStyle: {
-        height: height / 12,
+        height: height / 10,
         width: width,
         backgroundColor: "#393E46",
-        flexDirection: "row",
-        alignItems: "center",
+        justifyContent: "flex-end", 
         paddingLeft: 5,
         paddingRight: 5
     },
