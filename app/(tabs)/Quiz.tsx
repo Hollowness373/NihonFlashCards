@@ -7,7 +7,7 @@ export default function Quiz() {
   return (
     <View style={styles.container}>
         <QuizCategory categoryName='Quiz 1' disable={false} />
-        <QuizCategory categoryName='Quiz 2' disable={true} />
+        <QuizCategory categoryName='Quiz 2' disable={false} />
         <QuizCategory categoryName='Quiz 3' disable={true} />
     </View>
   )
@@ -19,6 +19,5 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     backgroundColor: "#222831"
-    //backgroundColor: '#151718',
 }
 })

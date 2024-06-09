@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput} from "
 import { useRouter, useLocalSearchParams } from "expo-router";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import CustomInput from "@/components/textinput/CustomInput";
-import Quiz1 from "@/assets/(quiz)/Hiragana/quiz1.json"
+import Quiz1 from "@/assets/(quiz)/Hiragana/quiz1.json";
+import Quiz2 from "@/assets/(quiz)/Hiragana/quiz2.json";
 
 const { height, width } = Dimensions.get("window");
 
@@ -98,12 +99,18 @@ const QuizHandler = () => {
     useEffect(() => {
         // Initialize
         runTimer(); // Timer
-        if (categoryName == "Quiz 1") {
-            //Randomize the arrangements of Objects in the Array
-            const newArr = Quiz1.sort(() => Math.random() - 0.5) 
-            setChrs(newArr)
-        } else {
-            console.log(categoryName)
+        switch (categoryName) {
+            case "Quiz 1":
+                //Randomize the arrangements of Objects in the Array
+                const newArr = Quiz1.sort(() => Math.random() - 0.5) 
+                setChrs(newArr)
+                break;
+            case "Quiz 2":
+                const newArr1 = Quiz2.sort(() => Math.random() - 0.5) 
+                setChrs(newArr1)
+                break;
+            default:
+                break;
         }
     }, []);
 
