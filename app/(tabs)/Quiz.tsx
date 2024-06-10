@@ -8,7 +8,8 @@ export default function Quiz() {
     <View style={styles.container}>
         <QuizCategory categoryName='Quiz 1' disable={false} />
         <QuizCategory categoryName='Quiz 2' disable={false} />
-        <QuizCategory categoryName='Quiz 3' disable={true} />
+        <QuizCategory categoryName='Quiz 3' disable={false} />
+        <QuizCategory categoryName='More Quiz Soon!' disable={true} />
     </View>
   )
 }
